@@ -583,7 +583,7 @@ docker-compose-build: Dockerfile.dev
 		-f Dockerfile.dev \
 		-t $(DEVEL_IMAGE_NAME) \
 		--build-arg BUILDKIT_INLINE_CACHE=1 \
-		--cache-from=$(DEV_DOCKER_TAG_BASE)/awx_devel:$(COMPOSE_TAG) .
+		--cache-from=$(DEV_DOCKER_TAG_BASE)/awx_devel .
 
 docker-clean:
 	-$(foreach container_id,$(shell docker ps -f name=tools_awx -aq && docker ps -f name=tools_receptor -aq),docker stop $(container_id); docker rm -f $(container_id);)
